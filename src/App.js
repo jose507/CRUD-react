@@ -38,23 +38,27 @@ function App() {
 
   return (
     <div className="App">
+        <div className="flex justify-center my-4">
+          <input type="text" placeholder="Name....." onChange={(event) =>{setNewName(event.target.value);}} className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mx-4"/>
+          <input type="number" placeholder="Age....."onChange={(event) =>{setNewAge(event.target.value);}} className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mx-4"/>
+          <button onClick={createUser} className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Create User</button>
+        </div>
 
-      <input type="text" placeholder="Name....." onChange={(event) =>{setNewName(event.target.value);}}/>
-      <input type="number" placeholder="Age....."onChange={(event) =>{setNewAge(event.target.value);}}/>
-      <button onClick={createUser}>Create User</button>
-
-
-      {users.map((user) =>{
-        return(
-          <div>
-            {" "}
-            <h1>Name: {user.name}</h1>
-            <h1>Age: {user.age}</h1>
-            <button onClick={() =>{updateUser(user.id, user.age)}}>Increase Age</button>
-            <button onClick={() =>{deleteUser(user.id)}}>Delete User</button>
-          </div>
-        );
-      })}
+        {users.map((user) =>{
+          return(
+            <div className="flex justify-center border-b border-gray-300">
+              <div className="flex justify-between items-center box-border p-4 border-3 w-1/2">
+                {" "}
+                <h1 className="text-2xl mx-5">Name: {user.name}</h1>
+                <h1 className="text-2xl">Age: {user.age}</h1>
+                <div className="flex justify-center">
+                  <button onClick={() =>{updateUser(user.id, user.age)}} className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-4">Increase Age</button>
+                  <button onClick={() =>{deleteUser(user.id)}} className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete User</button>
+                </div>
+              </div>
+            </div>
+          );
+        })}
     </div>
   );
 }
